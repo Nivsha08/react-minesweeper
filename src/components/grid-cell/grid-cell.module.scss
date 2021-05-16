@@ -6,10 +6,15 @@
     align-items: center;
     padding: 10px;
     box-sizing: border-box;
+    border-radius: 8px;
     transition: background-color .2s ease-in;
 
     &:hover {
         background-color: rgba(255, 255, 255, .2);
         cursor: pointer;
+    }
+
+    &.mine {
+        border: 1px solid red;
     }
 }

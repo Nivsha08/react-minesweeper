@@ -1,1 +1,1 @@
-export const CELL_SIZE_PX = 55;
+export const CELL_SIZE_PX = 45;

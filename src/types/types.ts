@@ -1,12 +1,15 @@
+export type Position = {
+    row: number;
+    column: number;
+}
+
 export type GameConfiguration = {
     rows: number;
     columns: number;
     numberOfMines: number;
 };
 
-export type Cell = {
-    row: number;
-    column: number;
+export type Cell = Position & {
     numberOfNeighborMines: number;
     isMine: boolean;
     flagged: boolean;

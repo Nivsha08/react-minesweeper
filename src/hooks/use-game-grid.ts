@@ -1,6 +1,18 @@
-import {Cell, GameConfiguration} from "../types/types";
+import {Cell, GameConfiguration, Position} from "../types/types";
 import {CSSProperties, useState} from "react";
 import {CELL_SIZE_PX} from "../constants";
+
+const generateMinesPositions = (numberOfMines: number, maxRow: number, maxColumn: number): Position[] => {
+    const positions: Position[] = [];
+    for (let i = 0; i < numberOfMines; i++) {
+        positions.push({
+            row: Math.floor(Math.random() * maxRow),
+            column: Math.floor(Math.random() * maxColumn),
+        });
+    }
+
+    return positions;
+};
 
 const initCell = (row: number, column: number, isMine: boolean = false): Cell => ({
     row,
@@ -12,6 +24,7 @@ const initCell = (row: number, column: number, isMine: boolean = false): Cell =>
 });
 
 const initGrid = (rows: number, columns: number, numberOfMines: number): Cell[][] => {
+    const minePositions = generateMinesPositions(numberOfMines, rows - 1, columns - 1);
     const grid: Cell[][] = [];
 
     for (let i = 0; i < rows; i++) {
@@ -20,6 +33,10 @@ const initGrid = (rows: number, columns: number, numberOfMines: number): Cell[][
             grid[i].push(initCell(i, j));
         }
     }
+
+    minePositions.forEach(({row, column}) => {
+        grid[row][column].isMine = true;
+    })
 
     return grid;
 };
