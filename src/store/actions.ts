@@ -2,7 +2,7 @@ import {useDispatch} from "react-redux";
 import {Cell, GameConfiguration} from "../types/types";
 import {useCallback} from "react";
 import {reducers} from "./slice";
-import {initGameConfiguration, initGameGrid} from "../hooks/game-creator";
+import {initGameConfiguration, initGameGrid} from "../utils/game-creator";
 
 export const useActions = () => {
     const dispatch = useDispatch();
@@ -27,6 +27,10 @@ export const useActions = () => {
         setGameIsStarted();
     }, [setGameConfiguration, setGameIsStarted, setGrid]);
 
+    const revealCell = useCallback((row: number, column: number) => {
+            dispatch(reducers.revealCell({row, column}))
+    }, [dispatch])
+
     const setCellFlag = useCallback((row: number, column: number, flagged: boolean) => {
         flagged ?
             dispatch(reducers.flagCell({row, column}))
@@ -46,6 +50,7 @@ export const useActions = () => {
         setGameConfiguration,
         setGameIsStarted,
         setGrid,
+        revealCell,
         setCellFlag,
         incrementElapsedTime,
         setGameIsOver

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from './grid-cell.module.scss';
 import {Cell} from "../../types/types";
 import classnames from 'classnames';
@@ -6,36 +6,40 @@ import {useActions} from "../../store/actions";
 
 type GridCellProps = {
     cell: Cell
+    onCellReveal: (cell: Cell) => void;
 }
 
-export const GridCell = ({cell}: GridCellProps) => {
-    const {row, column, numberOfNeighborMines, isMine} = cell;
-    const [revealed, setRevealed] = useState<boolean>(false);
-    const [flagged, setFlagged] = useState<boolean>(false);
-    const {setCellFlag} = useActions();
+export const GridCell = ({cell, onCellReveal}: GridCellProps) => {
+    const {row, column, revealed, flagged, numberOfNeighborMines, isMine} = cell;
+    const {revealCell, setCellFlag} = useActions();
 
-    const revealCell = () => {
+    const onCellClick = () => {
         if (flagged) return;
-        setRevealed(true);
+        revealCell(row, column);
+        onCellReveal(cell);
     };
 
     const toggleCellFlag = (event: React.MouseEvent) => {
         event.preventDefault();
         if (revealed) return;
         setCellFlag(row, column, !flagged);
-        setFlagged(!flagged);
     };
 
-    return <div onClick={revealCell}
+    return <div onClick={onCellClick}
                 onContextMenu={toggleCellFlag}
                 className={classnames(styles.gridCell, {
                     [styles.revealed]: revealed,
                     [styles.flagged]: flagged,
                     [styles.mine]: isMine
                 })}>
+        {/*{*/}
+        {/*    revealed && numberOfNeighborMines > 0 &&*/}
+        {/*    <span className={`text-${numberOfNeighborMines}`}>{numberOfNeighborMines}</span>*/}
+        {/*}*/}
         {
-            revealed && numberOfNeighborMines > 0 &&
+            numberOfNeighborMines > 0 &&
             <span className={`text-${numberOfNeighborMines}`}>{numberOfNeighborMines}</span>
         }
+
     </div>
 };

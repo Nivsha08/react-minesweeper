@@ -37,6 +37,10 @@ export const slice = createSlice({
         incrementElapsedTime: (state) => {
             state.game.elapsedTime++;
         },
+        revealCell: (state, {payload}: PayloadAction<Position>) => {
+            const {row, column} = payload;
+            state.game.grid[row][column].revealed = true;
+        },
         flagCell: (state, {payload}: PayloadAction<Position>) => {
             const {row, column} = payload;
             state.game.grid[row][column].flagged = true;

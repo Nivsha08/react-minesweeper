@@ -10,9 +10,10 @@ export type GameConfiguration = {
 };
 
 export type Cell = Position & {
-    numberOfNeighborMines: number;
     isMine: boolean;
+    revealed: boolean;
     flagged: boolean;
+    numberOfNeighborMines: number;
 };
 
 export type GameState = {
