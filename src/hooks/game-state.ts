@@ -20,3 +20,11 @@ export const useGameGrid = () => {
     const {selectGrid} = useSelectors();
     return useSelector(selectGrid);
 };
+
+export const useFlaggedCells = () => {
+    const grid = useGameGrid();
+    return grid.reduce((flaggedCells, row) => {
+        flaggedCells.push(...row.filter(cell => cell.flagged))
+        return flaggedCells;
+    }, []);
+};

@@ -28,6 +28,42 @@ const initCell = (row: number, column: number, isMine: boolean = false): Cell =>
     flagged: false,
 });
 
+const getNumberOfNeighborMines = (grid: Cell[][], row: number, column: number): number => {
+    let result = 0;
+    const cellNotOnRightBound = column < grid[0].length - 1;
+    const cellNotOnBottomBound = row < grid.length - 1;
+    const cellNotOnLeftBound = column > 1;
+    const cellNotOnTopBound = row > 1;
+
+    if (cellNotOnRightBound) {
+        result += grid[row][column + 1].isMine ? 1 : 0;
+    }
+    if (cellNotOnLeftBound) {
+        result += grid[row][column - 1].isMine ? 1 : 0;
+    }
+
+    if (cellNotOnBottomBound) {
+        result += grid[row + 1][column].isMine ? 1 : 0;
+        if (cellNotOnRightBound) {
+            result += grid[row + 1][column + 1].isMine ? 1 : 0;
+        }
+        if (cellNotOnLeftBound) {
+            result += grid[row + 1][column - 1].isMine ? 1 : 0;
+        }
+    }
+    if (cellNotOnTopBound) {
+        result += grid[row - 1][column].isMine ? 1 : 0;
+        if (cellNotOnRightBound) {
+            result += grid[row - 1][column + 1].isMine ? 1 : 0;
+        }
+        if (cellNotOnLeftBound) {
+            result += grid[row - 1][column - 1].isMine ? 1 : 0;
+        }
+    }
+
+    return result;
+};
+
 export const initGridStyle = (rows: number, columns: number): CSSProperties => ({
     gridTemplateRows: `${CELL_SIZE_PX}px `.repeat(rows),
     gridTemplateColumns: `${CELL_SIZE_PX}px `.repeat(columns),
@@ -53,7 +89,13 @@ export const initGameGrid = (gameConfig: GameConfiguration): Cell[][] => {
 
     minePositions.forEach(({row, column}) => {
         grid[row][column].isMine = true;
-    })
+    });
+
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < columns; j++) {
+            grid[i][j].numberOfNeighborMines = getNumberOfNeighborMines(grid, i, j);
+        }
+    }
 
     return grid;
 };

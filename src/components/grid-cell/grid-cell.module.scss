@@ -1,3 +1,5 @@
+@import 'src/styles/colors';
+
 .gridCell {
     background-color: rgba(255, 255, 255, .3);
     display: flex;
@@ -7,14 +9,32 @@
     padding: 10px;
     box-sizing: border-box;
     border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
     transition: background-color .2s ease-in;
+
+    @for $i from 1 through 9 {
+        :global {
+            .text-#{$i} {
+                color: map-get($textColors, $i);
+            }
+        }
+    }
 
     &:hover {
         background-color: rgba(255, 255, 255, .2);
         cursor: pointer;
     }
 
+    &.flagged {
+        background-color: transparentize(#f7d794, .3);
+    }
+
+    &.revealed {
+        background-color: rgba(255, 255, 255, .55);
+    }
+
     &.mine {
-        border: 1px solid red;
+        //border: 1px solid red;
     }
 }
