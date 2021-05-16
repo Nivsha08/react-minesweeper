@@ -1,12 +1,27 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './game-wrapper.module.scss';
 import {GameGrid} from "../game-grid/game-grid";
-import {useInitGameConfiguration} from "../../hooks/use-init-game-configuration";
+import {GameStats} from "../game-stats/game-stats";
+import {useGameIsStarted} from "../../hooks/game-state";
+import {useActions} from "../../store/actions";
+import {initGameConfiguration, initGameGrid} from "../../hooks/game-creator";
 
 export const GameWrapper = () => {
-    const gameConfig = useInitGameConfiguration();
+    const gameConfig = initGameConfiguration();
+    const {gameGrid, gridStyle} = initGameGrid(gameConfig);
+    const gameIsStarted = useGameIsStarted();
+    const {setGameIsStarted, setGrid} = useActions();
+
+    useEffect(() => {
+        if (!gameIsStarted) {
+            setGrid(gameGrid);
+            setGameIsStarted();
+            console.log('here');
+        }
+    }, [gameGrid, gameIsStarted, setGameIsStarted, setGrid]);
 
     return <div className={styles.wrapper}>
-        <GameGrid configuration={gameConfig} />
+        <GameStats/>
+        <GameGrid gridStyle={gridStyle}/>
     </div>
 };

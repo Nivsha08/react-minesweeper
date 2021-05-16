@@ -1,15 +1,14 @@
-import React from 'react';
+import React, {CSSProperties} from 'react';
 import styles from './game-grid.module.scss';
-import {GameConfiguration} from "../../types/types";
 import {GridCell} from "../grid-cell/grid-cell";
-import {useGameGrid} from "../../hooks/use-game-grid";
+import {useGameGrid} from "../../hooks/game-state";
 
 type GameGridProps = {
-    configuration: GameConfiguration;
+    gridStyle: CSSProperties;
 }
 
-export const GameGrid = ({configuration}: GameGridProps) => {
-    const {gameGrid, setGameGrid, gridStyle} = useGameGrid(configuration);
+export const GameGrid = ({gridStyle}: GameGridProps) => {
+    const gameGrid = useGameGrid();
 
     return <div className={styles.gameGrid} style={gridStyle}>
         {gameGrid.map((gridRow, i) =>

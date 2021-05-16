@@ -1,5 +1,5 @@
 import {Cell, GameConfiguration, Position} from "../types/types";
-import {CSSProperties, useState} from "react";
+import {CSSProperties} from "react";
 import {CELL_SIZE_PX} from "../constants";
 
 const generateMinesPositions = (numberOfMines: number, maxRow: number, maxColumn: number): Position[] => {
@@ -20,7 +20,6 @@ const initCell = (row: number, column: number, isMine: boolean = false): Cell =>
     isMine,
     numberOfNeighborMines: 0,
     flagged: false,
-    unknown: false
 });
 
 const initGrid = (rows: number, columns: number, numberOfMines: number): Cell[][] => {
@@ -46,15 +45,19 @@ const getGridStyle = (rows: number, columns: number): CSSProperties => ({
     gridTemplateColumns: `${CELL_SIZE_PX}px `.repeat(columns),
 });
 
-export const useGameGrid = (gameConfig: GameConfiguration) => {
-    const {rows, columns, numberOfMines} = gameConfig;
-    const gridStyle = getGridStyle(rows, columns);
+export const initGameConfiguration = (): GameConfiguration => ({
+    rows: 10,
+    columns: 15,
+    numberOfMines: 20
+});
 
-    const [gameGrid, setGameGrid] = useState<Cell[][]>(initGrid(rows, columns, numberOfMines));
+export const initGameGrid = (gameConfig: GameConfiguration) => {
+    const {rows, columns, numberOfMines} = gameConfig;
+    const gameGrid = initGrid(rows, columns, numberOfMines);
+    const gridStyle = getGridStyle(rows, columns);
 
     return {
         gameGrid,
-        setGameGrid,
         gridStyle
     }
 };

@@ -10,5 +10,5 @@ type GridCellProps = {
 export const GridCell = ({cell}: GridCellProps) => {
     return <div className={classnames(styles.gridCell, {
         [styles.mine]: cell.isMine
-    })} />
+    })}/>
 };
