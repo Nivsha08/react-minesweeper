@@ -6,7 +6,7 @@ function App() {
     return (
         <div className={styles.App}>
             <h1 className={styles.header}>React Minesweeper</h1>
-            <GameWrapper/>
+            <GameWrapper />
         </div>
     );
 }
