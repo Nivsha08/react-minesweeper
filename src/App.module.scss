@@ -1,0 +1,17 @@
+@import "styles/colors";
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+    height: 100vh;
+    background-color: $primary;
+}
+
+.header {
+    color: darken($primary, 10%);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    word-spacing: 12px;
+}
