@@ -1,4 +1,9 @@
 .statsWrapper {
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px;
+    margin-bottom: 10px;
     border: 1px solid red;
 }

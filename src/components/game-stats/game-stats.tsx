@@ -1,10 +1,13 @@
 import React from 'react';
 import styles from './game-stats.module.scss';
+import {useElapsedTime, useGameConfiguration} from "../../hooks/game-state";
 
-type GameStatsProps = {}
+export const GameStats = () => {
+    const {numberOfMines} = useGameConfiguration();
+    const elapsedTime = useElapsedTime();
 
-export const GameStats = ({}: GameStatsProps) => {
     return <div className={styles.statsWrapper}>
-
+        <div className={styles.minesStatus}>0 / {numberOfMines}</div>
+        <div className={styles.elapsedTime}>{elapsedTime}</div>
     </div>
 };
