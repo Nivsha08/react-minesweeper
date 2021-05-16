@@ -9,7 +9,7 @@ export const useActions = () => {
 
     const setGameConfiguration = useCallback((config: GameConfiguration) => {
         dispatch(reducers.setGameConfiguration(config));
-    }, [dispatch])
+    }, [dispatch]);
 
     const setGameIsStarted = useCallback(() => {
         dispatch(reducers.startGame());
@@ -29,17 +29,17 @@ export const useActions = () => {
 
     const revealCell = useCallback((row: number, column: number) => {
             dispatch(reducers.revealCell({row, column}))
-    }, [dispatch])
+    }, [dispatch]);
 
     const setCellFlag = useCallback((row: number, column: number, flagged: boolean) => {
         flagged ?
             dispatch(reducers.flagCell({row, column}))
             : dispatch(reducers.unFlagCell({row, column}));
-    }, [dispatch])
+    }, [dispatch]);
 
     const incrementElapsedTime = useCallback(() => {
             dispatch(reducers.incrementElapsedTime())
-    }, [dispatch])
+    }, [dispatch]);
 
     const setGameIsOver = useCallback(() => {
         dispatch(reducers.endGame());

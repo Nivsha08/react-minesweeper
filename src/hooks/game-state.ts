@@ -28,3 +28,8 @@ export const useFlaggedCells = () => {
         return flaggedCells;
     }, []);
 };
+
+export const useGameIsOver = () => {
+    const {selectGameIsOver} = useSelectors();
+    return useSelector(selectGameIsOver);
+};

@@ -11,11 +11,16 @@ export const GameGrid = () => {
     const {rows, columns} = useGameConfiguration();
     const gameGrid = useGameGrid();
     const gridStyle = initGridStyle(rows, columns);
-    const {revealCell} = useActions();
+    const {revealCell, setGameIsOver} = useActions();
 
     const onCellReveal = (cell: Cell) => {
-        const zeroNeighborsCells = getAllZeroNeighborsCells(gameGrid, cell);
-        zeroNeighborsCells.forEach(({row, column}) => revealCell(row, column));
+        if (cell.isMine) {
+            setGameIsOver();
+        }
+        else if (cell.numberOfNeighborMines === 0) {
+            const zeroNeighborsCells = getAllZeroNeighborsCells(gameGrid, cell);
+            zeroNeighborsCells.forEach(({row, column}) => revealCell(row, column));
+        }
     };
 
     return <div className={styles.gameGrid} style={gridStyle}>

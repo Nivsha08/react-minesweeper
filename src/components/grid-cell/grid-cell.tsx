@@ -30,14 +30,10 @@ export const GridCell = ({cell, onCellReveal}: GridCellProps) => {
                 className={classnames(styles.gridCell, {
                     [styles.revealed]: revealed,
                     [styles.flagged]: flagged,
-                    [styles.mine]: isMine
+                    [styles.mine]: isMine && revealed,
                 })}>
-        {/*{*/}
-        {/*    revealed && numberOfNeighborMines > 0 &&*/}
-        {/*    <span className={`text-${numberOfNeighborMines}`}>{numberOfNeighborMines}</span>*/}
-        {/*}*/}
         {
-            numberOfNeighborMines > 0 &&
+            revealed && numberOfNeighborMines > 0 && !isMine &&
             <span className={`text-${numberOfNeighborMines}`}>{numberOfNeighborMines}</span>
         }
 

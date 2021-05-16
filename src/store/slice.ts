@@ -30,6 +30,7 @@ export const slice = createSlice({
         },
         startGame: (state) => {
             state.game.gameIsStarted = true;
+            state.game.gameIsOver = false;
         },
         setGrid: (state, {payload}: PayloadAction<Cell[][]>) => {
             state.game.grid = payload;
