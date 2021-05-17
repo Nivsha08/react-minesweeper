@@ -8,7 +8,17 @@
     padding: 15px 10px;
     margin-bottom: 10px;
 
+    .icon {
+        margin-right: 8px;
+    }
+
     .minesStatus {
+        font-size: 18px;
+        font-weight: bold;
+        color: $primaryTextColor;
+    }
+
+    .elapsedTime {
         font-size: 18px;
         font-weight: bold;
         color: $primaryTextColor;

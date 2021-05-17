@@ -30,6 +30,7 @@ export const slice = createSlice({
             state.configuration = payload;
         },
         startGame: (state) => {
+            state.game.elapsedTime = 0;
             state.game.gameIsStarted = true;
             state.game.gameIsOver = false;
         },

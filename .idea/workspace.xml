@@ -5,23 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="64c7a6f3-a4ae-45eb-8c42-184ac58887a6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/utils/parse-seconds.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/game-grid/game-grid.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/game-grid/game-grid.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/game-grid/game-grid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/game-grid/game-grid.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/game-over-message/game-over-message.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/game-over-message/game-over-message.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/game-over-message/game-over-message.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/game-over-message/game-over-message.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/grid-cell/grid-cell.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid-cell/grid-cell.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/grid-cell/grid-cell.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid-cell/grid-cell.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/game-state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/game-state.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/selectors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/selectors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/game-stats/game-stats.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/game-stats/game-stats.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/game-stats/game-stats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/game-stats/game-stats.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/game-wrapper/game-wrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/game-wrapper/game-wrapper.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/slice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/_colors.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/_colors.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/game-creator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/game-creator.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/game-utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/game-utils.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
