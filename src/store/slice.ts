@@ -14,6 +14,7 @@ export const initialState: MinesweeperState = {
     },
     game: {
         grid: [],
+        mines: [],
         markedMines: 0,
         gameIsStarted: false,
         elapsedTime: 0,
@@ -34,6 +35,9 @@ export const slice = createSlice({
         },
         setGrid: (state, {payload}: PayloadAction<Cell[][]>) => {
             state.game.grid = payload;
+        },
+        setMines: (state, {payload}: PayloadAction<Position[]>) => {
+            state.game.mines = payload;
         },
         incrementElapsedTime: (state) => {
             state.game.elapsedTime++;

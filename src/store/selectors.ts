@@ -7,6 +7,7 @@ export const useSelectors = () => {
     const selectGameConfiguration = createSelector(selectState, (state) => state.configuration);
     const selectGameIsStarted = createSelector(selectGameState, (state) => state.gameIsStarted);
     const selectGrid = createSelector(selectGameState, (state) => state.grid);
+    const selectMines = createSelector(selectGameState, (state) => state.mines);
     const selectElapsedTime = createSelector(selectGameState, (state) => state.elapsedTime);
     const selectGameIsOver = createSelector(selectGameState, (state) => state.gameIsOver);
 
@@ -15,6 +16,7 @@ export const useSelectors = () => {
         selectGameIsStarted,
         selectElapsedTime,
         selectGrid,
+        selectMines,
         selectGameIsOver
     }
 };

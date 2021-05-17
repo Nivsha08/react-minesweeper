@@ -27,7 +27,7 @@
     }
 
     &.flagged {
-        background-color: transparentize(#f7d794, .3);
+        background-color: transparentize($flaggedCellColor, .3);
     }
 
     &.revealed {
@@ -35,6 +35,15 @@
     }
 
     &.mine {
-        background-color: $mineColor;
+        border: 3px solid transparentize($mineCellColor, .2);
+        background-color: lighten($mineCellColor, 15%);
+    }
+
+    .bombIcon {
+        color: $mineIconColor;
+    }
+
+    .flagIcon {
+        color: $flagIconColor;
     }
 }

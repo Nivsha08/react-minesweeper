@@ -18,6 +18,7 @@ export type Cell = Position & {
 
 export type GameState = {
     grid: Cell[][];
+    mines: Position[];
     markedMines: number;
     gameIsStarted: boolean;
     elapsedTime: number;

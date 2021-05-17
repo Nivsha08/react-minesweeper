@@ -14,27 +14,30 @@ export const initGameConfiguration = (): GameConfiguration => ({
     numberOfMines: 20
 });
 
-export const initGameGrid = (gameConfig: GameConfiguration): Cell[][] => {
+export const initGameGrid = (gameConfig: GameConfiguration) => {
     const {rows, columns, numberOfMines} = gameConfig;
     const minePositions = generateMinesPositions(numberOfMines, rows - 1, columns - 1);
-    const grid: Cell[][] = [];
+    const gameGrid: Cell[][] = [];
 
     for (let i = 0; i < rows; i++) {
-        grid.push([]);
+        gameGrid.push([]);
         for (let j = 0; j < columns; j++) {
-            grid[i].push(initCell(i, j));
+            gameGrid[i].push(initCell(i, j));
         }
     }
 
     minePositions.forEach(({row, column}) => {
-        grid[row][column].isMine = true;
+        gameGrid[row][column].isMine = true;
     });
 
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < columns; j++) {
-            grid[i][j].numberOfNeighborMines = getNumberOfNeighborMines(grid, i, j);
+            gameGrid[i][j].numberOfNeighborMines = getNumberOfNeighborMines(gameGrid, i, j);
         }
     }
 
-    return grid;
+    return {
+        gameGrid,
+        minePositions
+    };
 };

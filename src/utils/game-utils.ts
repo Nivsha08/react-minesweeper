@@ -74,3 +74,17 @@ export const getAllZeroNeighborsCells = (grid: Cell[][], rootCell: Cell): Cell[]
     const connectedComponentPositions = findConnectedComponent(binaryMatrix, { row, column });
     return connectedComponentPositions.map(({row, column}) => grid[row][column]);
 };
+
+export const getBoundaryNeighbors = (grid: Cell[][], cells: Cell[]): Cell[] => {
+    const result = cells.flatMap(cell => {
+        const {row, column} = cell;
+        return [
+            grid[row]?.[column + 1],
+            grid[row]?.[column - 1],
+            grid[row + 1]?.[column],
+            grid[row - 1]?.[column],
+        ].filter(cell => cell && cell.numberOfNeighborMines > 0);
+    });
+
+    return result;
+};

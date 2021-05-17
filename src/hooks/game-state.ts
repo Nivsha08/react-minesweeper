@@ -21,6 +21,11 @@ export const useGameGrid = () => {
     return useSelector(selectGrid);
 };
 
+export const useMinesPositions = () => {
+    const {selectMines} = useSelectors();
+    return useSelector(selectMines);
+};
+
 export const useFlaggedCells = () => {
     const grid = useGameGrid();
     return grid.reduce((flaggedCells, row) => {

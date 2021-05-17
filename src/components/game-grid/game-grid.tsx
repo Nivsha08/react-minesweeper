@@ -1,29 +1,46 @@
 import React from 'react';
 import styles from './game-grid.module.scss';
 import {GridCell} from "../grid-cell/grid-cell";
-import {useGameConfiguration, useGameGrid} from "../../hooks/game-state";
+import {useGameConfiguration, useGameGrid, useGameIsOver, useMinesPositions} from "../../hooks/game-state";
 import {initGridStyle} from "../../utils/game-creator";
-import {getAllZeroNeighborsCells} from "../../utils/game-utils";
+import {getAllZeroNeighborsCells, getBoundaryNeighbors} from "../../utils/game-utils";
 import {Cell} from "../../types/types";
 import {useActions} from "../../store/actions";
+import classnames from "classnames";
 
 export const GameGrid = () => {
     const {rows, columns} = useGameConfiguration();
     const gameGrid = useGameGrid();
+    const minesPositions = useMinesPositions();
     const gridStyle = initGridStyle(rows, columns);
+    const gameIsOver = useGameIsOver();
     const {revealCell, setGameIsOver} = useActions();
+
+    const revealGroup = (rootCell: Cell) => {
+        const zeroNeighborsCells = getAllZeroNeighborsCells(gameGrid, rootCell);
+        const boundaryNeighbors = getBoundaryNeighbors(gameGrid, zeroNeighborsCells);
+
+        [...zeroNeighborsCells, ...boundaryNeighbors]
+            .forEach(({row, column}) => revealCell(row, column));
+    };
+
+    const revealAllMines = () => {
+        minesPositions.forEach(({row, column}) => revealCell(row, column));
+    };
 
     const onCellReveal = (cell: Cell) => {
         if (cell.isMine) {
+            revealAllMines();
             setGameIsOver();
         }
         else if (cell.numberOfNeighborMines === 0) {
-            const zeroNeighborsCells = getAllZeroNeighborsCells(gameGrid, cell);
-            zeroNeighborsCells.forEach(({row, column}) => revealCell(row, column));
+            revealGroup(cell);
         }
     };
 
-    return <div className={styles.gameGrid} style={gridStyle}>
+    return <div className={classnames(styles.gameGrid, {
+        [styles.disabled]: gameIsOver
+    })} style={gridStyle}>
         {gameGrid.map((gridRow, i) =>
             gridRow.map((cell, j) =>
                 <GridCell cell={cell} onCellReveal={onCellReveal} key={`(${i},${j})`}/>))
