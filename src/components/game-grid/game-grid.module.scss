@@ -3,6 +3,7 @@
 .gameGrid {
     width: 100%;
     display: grid;
+    justify-content: center;
     row-gap: 4px;
     column-gap: 4px;
     position: relative;

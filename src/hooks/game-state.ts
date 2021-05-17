@@ -26,12 +26,30 @@ export const useMinesPositions = () => {
     return useSelector(selectMines);
 };
 
+export const useNonMineCells = () => {
+    const grid = useGameGrid();
+    return grid.reduce((nonMineCells, row) => {
+        nonMineCells.push(...row.filter(cell => !cell.isMine))
+        return nonMineCells;
+    }, []);
+};
+
 export const useFlaggedCells = () => {
     const grid = useGameGrid();
     return grid.reduce((flaggedCells, row) => {
         flaggedCells.push(...row.filter(cell => cell.flagged))
         return flaggedCells;
     }, []);
+};
+
+export const useIsPlayerWon = () => {
+    const {numberOfMines} = useGameConfiguration();
+    const nonMineCells = useNonMineCells();
+    const flaggedCells = useFlaggedCells();
+
+    return flaggedCells.length === numberOfMines
+        && nonMineCells.every(cell => cell.revealed)
+        && flaggedCells.every(cell => cell.isMine);
 };
 
 export const useGameIsOver = () => {

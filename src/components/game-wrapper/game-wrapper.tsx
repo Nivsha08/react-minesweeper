@@ -2,15 +2,22 @@ import React, {useCallback, useEffect, useState} from 'react';
 import styles from './game-wrapper.module.scss';
 import {GameGrid} from "../game-grid/game-grid";
 import {GameStats} from "../game-stats/game-stats";
-import {useGameIsOver, useGameIsStarted} from "../../hooks/game-state";
+import {
+    useGameIsOver,
+    useGameIsStarted,
+    useIsPlayerWon,
+} from "../../hooks/game-state";
 import {useActions} from "../../store/actions";
-import {GameOverMessage} from "../game-over-message/game-over-message";
+import {PlayerMessage} from "../player-message/player-message";
 
 export const GameWrapper = () => {
     const [gameIntervalId, setGameIntervalId] = useState<number | undefined>();
     const gameIsStarted = useGameIsStarted();
     const {initGame, incrementElapsedTime} = useActions();
+    const playerWon = useIsPlayerWon();
     const gameIsOver = useGameIsOver();
+
+    const gameEnded = playerWon || gameIsOver;
 
     const restartGame = useCallback(() => {
         initGame();
@@ -27,18 +34,15 @@ export const GameWrapper = () => {
     }, [gameIsStarted, incrementElapsedTime, initGame, restartGame]);
 
     useEffect(() => {
-        if (gameIsOver) {
+        if (gameEnded) {
             clearInterval(gameIntervalId);
         }
-    }, [gameIntervalId, gameIsOver])
-
-    const onTryAgain = () => {
-        restartGame();
-    };
+    }, [gameIntervalId, gameIsOver, playerWon])
 
     return <div className={styles.wrapper}>
         <GameStats/>
-        <GameGrid />
-        {gameIsOver && <GameOverMessage onTryAgain={onTryAgain} />}
+        <GameGrid disable={gameEnded} />
+        {playerWon && <PlayerMessage type='success' onActionClick={restartGame} />}
+        {gameIsOver && <PlayerMessage type='failure' onActionClick={restartGame} />}
     </div>
 };

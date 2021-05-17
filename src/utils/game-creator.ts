@@ -9,9 +9,9 @@ export const initGridStyle = (rows: number, columns: number): CSSProperties => (
 });
 
 export const initGameConfiguration = (): GameConfiguration => ({
-    rows: 8,
-    columns: 12,
-    numberOfMines: 20
+    rows: 10,
+    columns: 15,
+    numberOfMines: 25
 });
 
 export const initGameGrid = (gameConfig: GameConfiguration) => {

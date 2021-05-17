@@ -1,18 +1,30 @@
 @import "src/styles/colors";
 
-.gameOverWrapper {
+.playerMessageWrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 32px;
-    color: #fff;
-    font-weight: bold;
-    font-size: 48px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    word-spacing: 8px;
 
-    .tryAgainButton {
+    .title {
+        color: #fff;
+        font-weight: bold;
+        font-size: 48px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        word-spacing: 8px;
+    }
+
+    .description {
+        font-weight: normal;
+        font-size: 18px;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 8px;
+    }
+
+    .actionButton {
         padding: 12px 36px;
         margin-top: 16px;
         outline: none;
