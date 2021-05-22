@@ -5,16 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="64c7a6f3-a4ae-45eb-8c42-184ac58887a6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/player-message/player-message.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/game-configuration.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/difficulty-levels.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/game-grid/game-grid.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/game-grid/game-grid.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/game-grid/game-grid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/game-grid/game-grid.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/game-over-message/game-over-message.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/player-message/player-message.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/game-over-message/game-over-message.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/game-wrapper/game-wrapper.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/game-wrapper/game-wrapper.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/game-stats/game-stats.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/game-stats/game-top-bar.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/game-stats/game-stats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/game-stats/game-top-bar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/game-wrapper/game-wrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/game-wrapper/game-wrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hooks/game-state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/game-state.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/selectors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/selectors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/game-creator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/game-creator.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,10 +29,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectId" id="1st1AxIjciKxkqvXcNgVDlUdgtp" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -37,17 +49,35 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/utils" />
       <recent name="$PROJECT_DIR$" />
     </key>
+    <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/hooks/game-configuration.ts" />
+      <recent name="$PROJECT_DIR$/src/hooks/difficulty-levels.ts" />
+    </key>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="64c7a6f3-a4ae-45eb-8c42-184ac58887a6" name="Default Changelist" comment="" />
+      <created>1621676931916</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1621676931916</updated>
+      <workItem from="1621676933008" duration="4454000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

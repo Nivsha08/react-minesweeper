@@ -1,12 +1,14 @@
-import {Cell, GameConfiguration, GameState, Position} from "../types/types";
+import {Cell, DifficultyLevel, GameConfiguration, GameState, Position} from "../types/types";
 import {configureStore, createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 export type MinesweeperState = {
+    difficulty: DifficultyLevel;
     game: GameState;
     configuration: GameConfiguration;
 }
 
 export const initialState: MinesweeperState = {
+    difficulty: 'medium',
     configuration: {
         rows: 0,
         columns: 0,
@@ -26,6 +28,9 @@ export const slice = createSlice({
     name: 'minesweeper',
     initialState,
     reducers: {
+        setDifficultyLevel: (state, {payload}: PayloadAction<DifficultyLevel>) => {
+            state.difficulty = payload;
+        },
         setGameConfiguration: (state, {payload}: PayloadAction<GameConfiguration>) => {
             state.configuration = payload;
         },
