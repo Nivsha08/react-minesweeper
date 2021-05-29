@@ -1,0 +1,49 @@
+@import "src/styles/colors";
+
+.statsWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+
+    .icon {
+        margin-right: 8px;
+    }
+
+    .minesStatus {
+        font-size: 18px;
+        font-weight: bold;
+        color: $primaryTextColor;
+    }
+
+    .difficultySelector {
+        border-radius: 8px;
+        overflow: hidden;
+
+        .difficultyItem {
+            padding: 8px 16px;
+            height: auto;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+            background-color: $primaryTextColor;
+
+            :global(.ant-radio-button-checked) {
+                transition: background-color .3s ease-out;
+                background-color: $mineCellColor;
+            }
+        }
+    }
+
+    .elapsedTime {
+        min-width: 100px;
+        text-align: end;
+        font-size: 18px;
+        font-weight: bold;
+        color: $primaryTextColor;
+    }
+}

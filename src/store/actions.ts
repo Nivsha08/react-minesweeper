@@ -1,8 +1,9 @@
 import {useDispatch} from "react-redux";
-import {Cell, GameConfiguration, Position} from "../types/types";
+import {Cell, DifficultyLevel, GameConfiguration, Position} from "../types/types";
 import {useCallback} from "react";
 import {reducers} from "./slice";
-import {initGameConfiguration, initGameGrid} from "../utils/game-creator";
+import {initGameGrid} from "../utils/game-creator";
+import {getConfigByDifficulty} from "../utils/difficulty-levels";
 
 export const useActions = () => {
     const dispatch = useDispatch();
@@ -11,8 +12,8 @@ export const useActions = () => {
         dispatch(reducers.setGameConfiguration(config));
     }, [dispatch]);
 
-    const setGameIsStarted = useCallback(() => {
-        dispatch(reducers.startGame());
+    const setGameIsStarted = useCallback((isStarted) => {
+        dispatch(reducers.setGameIsStarted(isStarted));
     }, [dispatch]);
 
     const setGrid = useCallback((grid: Cell[][]) => {
@@ -23,14 +24,18 @@ export const useActions = () => {
         dispatch(reducers.setMines(mines));
     }, [dispatch]);
 
-    const initGame = useCallback(() => {
-        const gameConfig = initGameConfiguration();
+    const initGame = useCallback((difficulty: DifficultyLevel) => {
+        const gameConfig = getConfigByDifficulty(difficulty);
         const {gameGrid, minePositions} = initGameGrid(gameConfig);
         setGameConfiguration(gameConfig);
         setGrid(gameGrid);
         setMines(minePositions);
-        setGameIsStarted();
+        setGameIsStarted(true);
     }, [setGameConfiguration, setGameIsStarted, setGrid, setMines]);
+
+    const setDifficultyLevel = useCallback((difficulty: DifficultyLevel) => {
+        dispatch(reducers.setDifficultyLevel(difficulty));
+    }, [dispatch]);
 
     const revealCell = useCallback((row: number, column: number) => {
             dispatch(reducers.revealCell({row, column}))
@@ -51,6 +56,7 @@ export const useActions = () => {
     }, [dispatch]);
 
     return {
+        setDifficultyLevel,
         initGame,
         setGameConfiguration,
         setGameIsStarted,

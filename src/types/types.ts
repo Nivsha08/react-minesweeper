@@ -3,6 +3,8 @@ export type Position = {
     column: number;
 }
 
+export type DifficultyLevel = 'easy' | 'medium' | 'hard';
+
 export type GameConfiguration = {
     rows: number;
     columns: number;

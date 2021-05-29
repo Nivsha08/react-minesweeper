@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './game-grid.module.scss';
 import {GridCell} from "../grid-cell/grid-cell";
 import {
-    useGameConfiguration,
     useGameGrid,
     useMinesPositions
 } from "../../hooks/game-state";
@@ -11,16 +10,17 @@ import {getAllZeroNeighborsCells, getBoundaryNeighbors} from "../../utils/game-u
 import {Cell} from "../../types/types";
 import {useActions} from "../../store/actions";
 import classnames from "classnames";
+import {useGameDifficultyLevel} from "../../hooks/game-configuration";
 
 type GameGridProps = {
     disable: boolean;
 }
 
 export const GameGrid = ({disable}: GameGridProps) => {
-    const {rows, columns} = useGameConfiguration();
+    const difficulty = useGameDifficultyLevel();
     const gameGrid = useGameGrid();
     const minesPositions = useMinesPositions();
-    const gridStyle = initGridStyle(rows, columns);
+    const gridStyle = initGridStyle(difficulty);
     const {revealCell, setGameIsOver} = useActions();
 
     const revealGroup = (rootCell: Cell) => {

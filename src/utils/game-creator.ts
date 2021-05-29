@@ -1,18 +1,16 @@
-import {Cell, GameConfiguration} from "../types/types";
+import {Cell, DifficultyLevel, GameConfiguration} from "../types/types";
 import {CSSProperties} from "react";
-import {CELL_SIZE_PX} from "../constants";
 import {generateMinesPositions, getNumberOfNeighborMines, initCell} from "./game-utils";
+import {getConfigByDifficulty} from "./difficulty-levels";
 
-export const initGridStyle = (rows: number, columns: number): CSSProperties => ({
-    gridTemplateRows: `${CELL_SIZE_PX}px `.repeat(rows),
-    gridTemplateColumns: `${CELL_SIZE_PX}px `.repeat(columns),
-});
+export const initGridStyle = (difficulty: DifficultyLevel): CSSProperties => {
+    const {cellSize, rows, columns} = getConfigByDifficulty(difficulty);
 
-export const initGameConfiguration = (): GameConfiguration => ({
-    rows: 10,
-    columns: 15,
-    numberOfMines: 25
-});
+    return {
+        gridTemplateRows: `${cellSize}px `.repeat(rows),
+        gridTemplateColumns: `${cellSize}px `.repeat(columns),
+    }
+};
 
 export const initGameGrid = (gameConfig: GameConfiguration) => {
     const {rows, columns, numberOfMines} = gameConfig;

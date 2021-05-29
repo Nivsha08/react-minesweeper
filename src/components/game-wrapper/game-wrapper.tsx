@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import styles from './game-wrapper.module.scss';
 import {GameGrid} from "../game-grid/game-grid";
-import {GameStats} from "../game-stats/game-stats";
+import {GameTopBar} from "../game-stats/game-top-bar";
 import {
     useGameIsOver,
     useGameIsStarted,
@@ -9,23 +9,26 @@ import {
 } from "../../hooks/game-state";
 import {useActions} from "../../store/actions";
 import {PlayerMessage} from "../player-message/player-message";
+import {useGameDifficultyLevel} from "../../hooks/game-configuration";
+import {DifficultyLevel} from "../../types/types";
 
 export const GameWrapper = () => {
     const [gameIntervalId, setGameIntervalId] = useState<number | undefined>();
+    const difficulty = useGameDifficultyLevel();
     const gameIsStarted = useGameIsStarted();
-    const {initGame, incrementElapsedTime} = useActions();
+    const {initGame, incrementElapsedTime, setDifficultyLevel, setGameIsStarted} = useActions();
     const playerWon = useIsPlayerWon();
     const gameIsOver = useGameIsOver();
 
     const gameEnded = playerWon || gameIsOver;
 
     const restartGame = useCallback(() => {
-        initGame();
+        initGame(difficulty);
         const intervalId = setInterval(() => {
             incrementElapsedTime();
         }, 1000)
         setGameIntervalId(intervalId as unknown as number);
-    }, [incrementElapsedTime, initGame]);
+    }, [difficulty, incrementElapsedTime, initGame]);
 
     useEffect(() => {
         if (!gameIsStarted) {
@@ -37,10 +40,18 @@ export const GameWrapper = () => {
         if (gameEnded) {
             clearInterval(gameIntervalId);
         }
-    }, [gameIntervalId, gameIsOver, playerWon])
+    }, [gameEnded, gameIntervalId, gameIsOver, playerWon])
+
+    const onDifficultyChange = (difficulty: DifficultyLevel) => {
+        if (gameIntervalId) {
+            clearInterval(gameIntervalId);
+        }
+        setDifficultyLevel(difficulty);
+        setGameIsStarted(false);
+    }
 
     return <div className={styles.wrapper}>
-        <GameStats/>
+        <GameTopBar onDifficultyChange={onDifficultyChange}/>
         <GameGrid disable={gameEnded} />
         {playerWon && <PlayerMessage type='success' onActionClick={restartGame} />}
         {gameIsOver && <PlayerMessage type='failure' onActionClick={restartGame} />}
