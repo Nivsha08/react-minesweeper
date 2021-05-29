@@ -8,12 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/game-stats/game-top-bar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/game-stats/game-top-bar.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/game-stats/game-top-bar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/game-stats/game-top-bar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/game-wrapper/game-wrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/game-wrapper/game-wrapper.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/difficulty-levels.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/difficulty-levels.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
