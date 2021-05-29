@@ -12,8 +12,6 @@ export const initGridStyle = (difficulty: DifficultyLevel): CSSProperties => {
     }
 };
 
-export const initGameConfiguration = (difficulty: DifficultyLevel): GameConfiguration => getConfigByDifficulty(difficulty);
-
 export const initGameGrid = (gameConfig: GameConfiguration) => {
     const {rows, columns, numberOfMines} = gameConfig;
     const minePositions = generateMinesPositions(numberOfMines, rows - 1, columns - 1);

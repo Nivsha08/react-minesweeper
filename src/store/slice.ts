@@ -34,9 +34,9 @@ export const slice = createSlice({
         setGameConfiguration: (state, {payload}: PayloadAction<GameConfiguration>) => {
             state.configuration = payload;
         },
-        startGame: (state) => {
+        setGameIsStarted: (state, {payload}: PayloadAction<boolean>) => {
             state.game.elapsedTime = 0;
-            state.game.gameIsStarted = true;
+            state.game.gameIsStarted = payload;
             state.game.gameIsOver = false;
         },
         setGrid: (state, {payload}: PayloadAction<Cell[][]>) => {

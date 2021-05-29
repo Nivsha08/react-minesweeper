@@ -16,7 +16,7 @@ export const GameWrapper = () => {
     const [gameIntervalId, setGameIntervalId] = useState<number | undefined>();
     const difficulty = useGameDifficultyLevel();
     const gameIsStarted = useGameIsStarted();
-    const {initGame, incrementElapsedTime, setDifficultyLevel} = useActions();
+    const {initGame, incrementElapsedTime, setDifficultyLevel, setGameIsStarted} = useActions();
     const playerWon = useIsPlayerWon();
     const gameIsOver = useGameIsOver();
 
@@ -31,6 +31,7 @@ export const GameWrapper = () => {
     }, [difficulty, incrementElapsedTime, initGame]);
 
     useEffect(() => {
+        console.log('effect, gameIsStarted?', gameIsStarted);
         if (!gameIsStarted) {
             restartGame();
         }
@@ -47,7 +48,7 @@ export const GameWrapper = () => {
             clearInterval(gameIntervalId);
         }
         setDifficultyLevel(difficulty);
-        restartGame();
+        setGameIsStarted(false);
     }
 
     return <div className={styles.wrapper}>

@@ -2,21 +2,18 @@ import {useDispatch} from "react-redux";
 import {Cell, DifficultyLevel, GameConfiguration, Position} from "../types/types";
 import {useCallback} from "react";
 import {reducers} from "./slice";
-import {initGameConfiguration, initGameGrid} from "../utils/game-creator";
+import {initGameGrid} from "../utils/game-creator";
+import {getConfigByDifficulty} from "../utils/difficulty-levels";
 
 export const useActions = () => {
     const dispatch = useDispatch();
-
-    const setDifficultyLevel = useCallback((difficulty: DifficultyLevel) => {
-        dispatch(reducers.setDifficultyLevel(difficulty));
-    }, [dispatch]);
 
     const setGameConfiguration = useCallback((config: GameConfiguration) => {
         dispatch(reducers.setGameConfiguration(config));
     }, [dispatch]);
 
-    const setGameIsStarted = useCallback(() => {
-        dispatch(reducers.startGame());
+    const setGameIsStarted = useCallback((isStarted) => {
+        dispatch(reducers.setGameIsStarted(isStarted));
     }, [dispatch]);
 
     const setGrid = useCallback((grid: Cell[][]) => {
@@ -28,13 +25,18 @@ export const useActions = () => {
     }, [dispatch]);
 
     const initGame = useCallback((difficulty: DifficultyLevel) => {
-        const gameConfig = initGameConfiguration(difficulty);
+        const gameConfig = getConfigByDifficulty(difficulty);
+        console.log('GAME CONFIG:', gameConfig);
         const {gameGrid, minePositions} = initGameGrid(gameConfig);
         setGameConfiguration(gameConfig);
         setGrid(gameGrid);
         setMines(minePositions);
-        setGameIsStarted();
+        setGameIsStarted(true);
     }, [setGameConfiguration, setGameIsStarted, setGrid, setMines]);
+
+    const setDifficultyLevel = useCallback((difficulty: DifficultyLevel) => {
+        dispatch(reducers.setDifficultyLevel(difficulty));
+    }, [dispatch]);
 
     const revealCell = useCallback((row: number, column: number) => {
             dispatch(reducers.revealCell({row, column}))
