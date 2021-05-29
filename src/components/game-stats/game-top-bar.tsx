@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './game-top-bar.module.scss';
+import {Radio} from 'antd';
+import {upperFirst} from 'lodash';
 import {useElapsedTime, useFlaggedCells} from "../../hooks/game-state";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBomb, faClock} from "@fortawesome/free-solid-svg-icons";
@@ -23,19 +25,20 @@ export const GameTopBar = ({onDifficultyChange}: GameTopBarProps) => {
 
     return <div className={styles.statsWrapper}>
         <div className={styles.minesStatus}>
-            <FontAwesomeIcon icon={faBomb} className={styles.icon} />
+            <FontAwesomeIcon icon={faBomb} className={styles.icon}/>
             {flaggedCells.length} / {numberOfMines}
         </div>
         <div className={styles.difficultySelector}>
-            <select value={difficulty}
-                    onChange={({target: {value}}) => handleDifficultySelection(value as DifficultyLevel)}>
-                <option value={'easy' as const}>Easy</option>
-                <option value={'medium' as const}>Medium</option>
-                <option value={'hard' as const}>Hard</option>
-            </select>
+            <Radio.Group value={difficulty} size="small"
+                         onChange={({target: {value}}) => handleDifficultySelection(value as DifficultyLevel)}>
+                {['easy', 'medium', 'hard']
+                    .map(difficulty => <Radio.Button value={difficulty} key={difficulty}
+                                                     className={styles.difficultyItem}>
+                        {upperFirst(difficulty)}</Radio.Button>)}
+            </Radio.Group>
         </div>
         <div className={styles.elapsedTime}>
-            <FontAwesomeIcon icon={faClock} className={styles.icon} />
+            <FontAwesomeIcon icon={faClock} className={styles.icon}/>
             {parseSeconds(elapsedTime)}
         </div>
     </div>

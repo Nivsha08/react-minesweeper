@@ -31,7 +31,6 @@ export const GameWrapper = () => {
     }, [difficulty, incrementElapsedTime, initGame]);
 
     useEffect(() => {
-        console.log('effect, gameIsStarted?', gameIsStarted);
         if (!gameIsStarted) {
             restartGame();
         }

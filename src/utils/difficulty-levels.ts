@@ -24,6 +24,5 @@ const configByDifficulty: Record<DifficultyLevel, GameConfiguration & {
 };
 
 export const getConfigByDifficulty = (difficulty: DifficultyLevel) => {
-    console.log(difficulty, configByDifficulty[difficulty]);
     return configByDifficulty[difficulty];
 };

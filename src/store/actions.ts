@@ -26,7 +26,6 @@ export const useActions = () => {
 
     const initGame = useCallback((difficulty: DifficultyLevel) => {
         const gameConfig = getConfigByDifficulty(difficulty);
-        console.log('GAME CONFIG:', gameConfig);
         const {gameGrid, minePositions} = initGameGrid(gameConfig);
         setGameConfiguration(gameConfig);
         setGrid(gameGrid);
